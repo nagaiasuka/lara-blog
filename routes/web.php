@@ -27,3 +27,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 // });
 
 Route::get('/posts','PostController@index')->name('index');
+Route::get('/posts/create','PostController@create')->name('create');

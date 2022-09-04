@@ -14,4 +14,8 @@ class PostController extends Controller
         // dd($posts);
         return view('posts.index',compact('posts'));
     }
+
+    function create(){
+        return view('posts.create');
+    }
 }
