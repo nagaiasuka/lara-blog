@@ -29,7 +29,7 @@ class PostController extends Controller
         $post -> user_id = Auth::id();
 
         $post->save();
-        return redirect()->route('index');
+        return redirect()->route('posts.index');
     }
 
     function show($id){
@@ -53,6 +53,11 @@ class PostController extends Controller
         return view('posts.show',compact('post'));
     }
 
+    function destroy($id){
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('posts.index');
+    }
 
 
 }

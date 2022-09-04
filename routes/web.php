@@ -26,9 +26,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     return view('posts.create');
 // });
 
-Route::get('/posts','PostController@index')->name('index');
-Route::get('/posts/create','PostController@create')->name('create');
-Route::post('/posts','PostController@store')->name('store');
-Route::get('/posts/{id}','PostController@show')->name('show');
-Route::get('/posts/{id}/edit','PostController@edit')->name('edit');
-Route::put('/posts/{id}/','PostController@update')->name('update');
+Route::resource('posts','PostController');
+
+// Route::get('/posts','PostController@index')->name('index');
+// Route::get('/posts/create','PostController@create')->name('create');
+// Route::post('/posts','PostController@store')->name('store');
+// Route::get('/posts/{id}','PostController@show')->name('show');
+// Route::get('/posts/{id}/edit','PostController@edit')->name('edit');
+// Route::put('/posts/{id}/','PostController@update')->name('update');
+// Route::delete('/posts/{id}/','PostController@destroy')->name('destroy');
