@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts','PostController@index')->name('index');
 Route::get('/posts/create','PostController@create')->name('create');
+Route::post('/posts','PostController@store')->name('store');
+Route::get('/posts/{id}','PostController@show')->name('show');
