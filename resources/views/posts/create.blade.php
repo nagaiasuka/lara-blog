@@ -3,7 +3,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
       <div class="col-md-8">
-          <form action="{{ route('posts.store') }}" method="POST">
+          <form action="{{ route('posts.store') }}" method="POST"  enctype="multipart/form-data">
             @csrf
               <div class="form-group">
                   <label>タイトル</label>
@@ -14,6 +14,10 @@
                   <textarea class="form-control" placeholder="内容" rows="5" name="body">
                   </textarea>
               </div>
+              <label>image</label>
+                <div><input type="file" name="image"></div>
+                {{ csrf_field() }}
+                <!-- <input type="submit" value="作成"> -->
               <button type="submit" class="btn btn-primary">作成</button>
           </form>
       </div>

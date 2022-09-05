@@ -7,6 +7,8 @@ use App\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+// use Storage;
 
 class PostController extends Controller
 {
@@ -28,7 +30,14 @@ class PostController extends Controller
         $post -> body = $request -> body;
         $post -> user_id = Auth::id();
 
+     // 追加したところ１
+        $image = $request->file('image');
+        // dd($image);
+        $path = Storage::disk('s3')->putFile('larablogimg',$image,'public');
+        $post ->image_path = Storage::disk('s3') -> url($path);
+        
         $post->save();
+
         return redirect()->route('posts.index');
     }
 
@@ -48,6 +57,11 @@ class PostController extends Controller
 
         $post -> title = $request -> title;
         $post -> body = $request -> body;
+
+
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('larablogimg',$image,'public');
+        $post ->image_path = Storage::disk('s3') -> url($path);
 
         $post->save();
         return view('posts.show',compact('post'));
