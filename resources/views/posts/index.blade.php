@@ -13,6 +13,12 @@
               <p class="card-text">
                 内容 : {{ $post->body }}
               </p>
+            @if ($post->image_path!==null)
+            <div>
+             <img src=" {{ $post->image_path }}" alt=""width="600" height="450">
+            </div>
+              
+            @endif
               <p class="card-text">投稿者：{{$post->user->name}}</p>
               <a href="{{ route('posts.show',$post->id) }}" class="btn btn-primary">詳細へ</a>
           </div>
